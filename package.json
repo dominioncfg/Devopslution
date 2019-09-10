@@ -1,0 +1,19 @@
+{
+  "name": "devopslution",
+  "version": "1.0.0",
+  "description": "A really cool web app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dominioncfg/Devopslution.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dominioncfg/Devopslution/issues"
+  },
+  "homepage": "https://github.com/dominioncfg/Devopslution#readme"
+}
