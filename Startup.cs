@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 
 namespace Devopslution
 {
@@ -24,6 +25,11 @@ namespace Devopslution
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                //Webpack Setup
+                WebpackDevMiddlewareOptions opt = new WebpackDevMiddlewareOptions();
+                opt.ConfigFile = "webpack.config.Development";
+                app.UseWebpackDevMiddleware(opt);
             }
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
