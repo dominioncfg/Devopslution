@@ -8,7 +8,7 @@ const path = require('path');
 const outputFolder = path.resolve(__dirname, 'wwwroot', 'bundles');
 const publicPath = path.resolve(__dirname, 'wwwroot');
 const inputFolder = path.resolve(__dirname, 'ClientApp');
-const mainJS = path.resolve(inputFolder, "js", "main.js");
+const mainJS = path.resolve(inputFolder, "js", "main.ts");
 const mainSCSS = path.resolve(inputFolder, "scss", "styles.scss");
 
 //**Input/Output
