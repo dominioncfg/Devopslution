@@ -1,8 +1,0 @@
-{
-    "emmet.includeLanguages": {
-        "razor": "html"
-    },
-    "files.associations": {
-        "*.cshtml": "html"
-    }
-}

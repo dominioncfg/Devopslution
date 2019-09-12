@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 
-namespace Devopslution
+namespace Devopslution.Web
 {
     public class Startup
     {

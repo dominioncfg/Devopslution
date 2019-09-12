@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Devopslution.Controllers
+namespace Devopslution.Web.Controllers
 {
     public class HomeController : Controller
     {
