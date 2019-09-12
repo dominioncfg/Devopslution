@@ -27,17 +27,14 @@ module.exports = merge(common, {
                 test: /\.css$/,
                 use:
                     [
-                        "style-loader"
+                        "style-loader",
+                        {
+                            loader: "css-loader", options: {
+                                sourceMap: true,
+                                url: false
+                            }
+                        }
                     ],
-                exclude: /\.module\.css$/
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    "style-loader",
-                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-                ],
-                include: /\.module\.css$/
             },
             //Sass
             {
@@ -59,5 +56,6 @@ module.exports = merge(common, {
             }
         ]
     },
-    plugins: []
+    plugins: [
+    ]
 });

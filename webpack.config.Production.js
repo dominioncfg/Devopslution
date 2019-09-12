@@ -7,6 +7,9 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
+    mode: 'production',
+    devtool: 'source-map',
+
     optimization: {
         minimizer: [
             //Minimize JS
@@ -19,7 +22,7 @@ module.exports = merge(common, {
                 sourceMap: true
             }),
             //Minimize CSS
-             new OptimizeCSSAssetsPlugin({
+            new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {
                     sourceMap: true,
                     map: {
@@ -27,70 +30,66 @@ module.exports = merge(common, {
                         annotation: true
                     }
                 }
-            }) ]
+            })]
     },
-    mode: 'production',
-    devtool: 'source-map',
-    module: {
-        rules:
-            [
-                //JS
-                {
-                    test: /\.js$/,
-                    use: 'babel-loader',
-                },
 
-                //TypeScript
-                {
-                    test: /\.(ts|tsx)?$/,
-                    loader: 'ts-loader',
-                    options: {
-                      
-                    }
-                },
-                //CSS           
-                {
-                    test: /\.css$/,
-                    use: [
-                        MiniCssExtractPlugin.loader,
+    module: {
+        rules: [
+            //JS
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /node_modules/
+            },
+
+            //TypeScript
+            {
+                test: /\.(ts|tsx)?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                }
+            },
+
+            //CSS
+            {
+                test: /\.css$/,
+                use:
+                    [
                         {
-                            loader: "style-loader", options: {
-                                sourceMap: true
-                            }
-                        }
-                    ],
-                    exclude: /\.module\.css$/
-                },
-                {
-                    test: /\.css$/,
-                    use: [
-                        MiniCssExtractPlugin.loader,
-                        'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-                    ],
-                    include: /\.module\.css$/
-                },
-                //Sass
-                {
-                    test: /\.scss$/,
-                    use: [
-                        MiniCssExtractPlugin.loader,
-                        "css-loader",
-                        "sass-loader"
-                     /*    {
+                            loader: MiniCssExtractPlugin.loader
+                        },
+                        {
                             loader: "css-loader", options: {
                                 sourceMap: true,
                                 url: false
                             }
-                        },
-                        {
-                            loader: "sass-loader", options: {
-                                sourceMap: true
-                            }
-                        } */
-                    ]
-                }
-            ]
+                        }
+                    ],
+            },
+            //Sass
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: "css-loader", options: {
+                            sourceMap: true,
+                            url: false
+                        }
+                    },
+                    {
+                        loader: "sass-loader", options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
+            }
+        ]
     },
+
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].css",
