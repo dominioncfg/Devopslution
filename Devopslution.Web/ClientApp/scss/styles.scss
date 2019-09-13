@@ -1,9 +1,6 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
-$main-background:rgb(65, 214, 27);
-
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-  background-color: $main-background;
-}
+/*
+@import './abstracts/variables.css';
+@import './base/reset.scss';
+@import './base/base_styles';
+@import './layout/main_content.scss';
+ */

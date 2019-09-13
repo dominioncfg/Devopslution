@@ -13,8 +13,12 @@
     </environment>
 </head>
 <body>
-    <div class="envName">@env.EnvironmentName</div>
-    @RenderBody()
+    <header>
+        <div class="envName">@env.EnvironmentName</div>
+    </header>
+    <div class="page_content">
+        @RenderBody()
+    </div>
 </body>
 
 </html>
