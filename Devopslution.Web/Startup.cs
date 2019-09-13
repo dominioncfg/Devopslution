@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Devopslution.Domain;
 
 namespace Devopslution.Web
 {
@@ -17,6 +18,7 @@ namespace Devopslution.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<ITechnologyRepository,TechnologyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
