@@ -135,7 +135,7 @@ input,
 select,
 textarea {
 	outline: none;
-	@include prefix(appearance, none);
+	appearance: none;
 	background-color: #fff;
 	border: 0;
 }

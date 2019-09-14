@@ -40,11 +40,12 @@ module.exports = merge(common, {
             {
                 test: /\.scss$/,
                 use: [
-                    "style-loader",
+                    'style-loader',
                     {
-                        loader: "css-loader", options: {
+                        loader: "css-loader", 
+                        options: {
                             sourceMap: true,
-                            url: false
+                            url: false,
                         }
                     },
                     {

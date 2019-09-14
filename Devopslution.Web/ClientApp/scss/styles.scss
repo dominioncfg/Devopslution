@@ -1,6 +1,12 @@
-/*
-@import './abstracts/variables.css';
-@import './base/reset.scss';
-@import './base/base_styles';
-@import './layout/main_content.scss';
- */
+//**Vars
+@import './abstract/variables';
+
+//**Base
+@import './base/reset';
+@import './base/global_settings';
+
+//**Layout
+@import './layout/main_content';
+
+//**Pages
+@import './pages/techPage';
