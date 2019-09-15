@@ -1,0 +1,42 @@
+@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment env
+@using Microsoft.AspNetCore.Hosting 
+<html>
+
+<head>
+    <title>Devopslution - @ViewBag.Title</title>
+    <environment names="development">
+        <script src="~/bundles/main.bundle.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="staging, production">
+        <link href="~/bundles/main.css" asp-append-version="true" rel="stylesheet" />
+        <script src="~/bundles/main.bundle.js" asp-append-version="true"></script>
+    </environment>
+</head>
+<body>
+    <header class="header__container">
+        <div class="header__logo">
+
+        </div>
+
+        <div class="header__title">
+            <h1>Devopslution</h1>
+        </div>
+
+        <div class="header__empty-item"></div>       
+    </header>
+    <header class="header__container header__container--subheader header__container--right">
+        <div class="header__item">
+            <div>
+                <h5 class="header__title header__title--small">Environment:</h5>
+            </div>          
+            <div class="">
+                <h5>@env.EnvironmentName</h1>
+            </div>
+        </div>
+    </header>
+    <div class="page_content">
+        @RenderBody()
+    </div>
+</body>
+
+</html>

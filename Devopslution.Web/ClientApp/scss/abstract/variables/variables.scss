@@ -1,0 +1,37 @@
+//Colors
+$color-white: #ffffff;
+
+// GRAY SCALE
+$color-black: #000;
+$color-dark: rgba($color-black, 0.6);
+$color-gray-1: #545454;
+$color-gray-2: #bdbdbd;
+$color-gray-3: #dcdcdc; 
+$color-gray-4: #e6e6e6;
+$color-gray-5: #f9f9f9;
+$color-gray-6: #EEEEEE;
+$color-gray-7: #EDEDED;
+$color-gray-8: rgba(134,134,134,1);
+
+// CORPORATE
+$color-brand-1: #FF8200;
+
+// ELEMENTS
+$color-border: $color-gray-3;
+
+//Fonts
+$font-1: 'Montserrat', sans-serif;
+
+//**
+$breakpoints: (
+  'xs': 380px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1080px,
+  'xxl': 1280px,
+  'xxxl': 1400px) !default;
+
+//***
+$header-color-main: #1972d2;
+$header-color-gradient-to: #1559b2;
