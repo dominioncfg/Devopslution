@@ -1,5 +1,4 @@
-$header-color-main: #1972d2;
-$header-color-gradient-to: #1559b2;
+
 
 .header__container {
   $header-item-width: 190px;
@@ -65,6 +64,7 @@ $header-color-gradient-to: #1559b2;
     filter: none;
     background: none;
     background-color: $color-brand-1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   &.header__container--right {
     justify-content: right;
