@@ -6,9 +6,15 @@
     .content
     {
         width: 80%;  
+
+        @include media('lg')
+        {
+            width: 90%
+        } 
         @include media('sm')
         {
             width: 98%
         }      
+     
     }
 }
