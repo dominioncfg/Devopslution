@@ -1,11 +1,18 @@
-//**Vars
-@import './abstract/variables';
+
+//**Abstract
+@import './abstract/variables/variables';
+@import './abstract/functions/contains.scss';
+@import './abstract/mixins/media-queries.scss';
 
 //**Base
 @import './base/reset';
 @import './base/global_settings';
 
+//Vendors
+
+
 //**Layout
+@import './layout/header';
 @import './layout/main_content';
 
 //**Pages
