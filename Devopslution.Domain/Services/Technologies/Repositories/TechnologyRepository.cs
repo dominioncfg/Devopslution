@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace Devopslution.Domain
+namespace Devopslution.Domain.Services.Technologies
 {
     public class TechnologyRepository : ITechnologyRepository
     {

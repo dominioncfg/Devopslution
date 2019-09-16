@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-namespace Devopslution.Domain
+namespace Devopslution.Domain.Services.Technologies
 {
-    public interface ITechnologyRepository
+    public interface ITechnologyService
     {
         IEnumerable<ITechnology> GetAll();
     }

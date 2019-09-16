@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Devopslution.Domain;
+using Devopslution.Domain.Services.Technologies;
 
 namespace Devopslution.Web
 {
@@ -9,9 +9,9 @@ namespace Devopslution.Web
     [ApiController]
     public class TechnologyApiController : ControllerBase
     {
-        private readonly ITechnologyRepository technologyRepository;
+        private readonly ITechnologyService technologyRepository;
 
-        public TechnologyApiController(ITechnologyRepository techsRepo)
+        public TechnologyApiController(ITechnologyService techsRepo)
         {
             technologyRepository = techsRepo;
         }
