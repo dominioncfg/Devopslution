@@ -20,7 +20,7 @@ steps:
   displayName: '.Net Core Publish - $(buildConfiguration)'
   inputs:
     command: publish
-    projects: '**/*.csproj'
+    projects: 'Devopslution.Web/Devopslution.Web.csproj'
     publishWebProjects: false
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
     zipAfterPublish: True
