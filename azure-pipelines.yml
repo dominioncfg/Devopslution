@@ -6,6 +6,15 @@ variables:
   resultName: 'Devopslution'
 
 steps:
+- task: Npm@1
+  displayName: 'Install NPM Packages - $(buildConfiguration)'
+  inputs:
+    command: 'install' 
+    workingDir: Devopslution.Web/
+- script: 'npm run build-prod'
+  workingDirectory: Devopslution.Web/
+  displayName:
+
 - task: DotNetCoreCLI@2
   displayName: '.Net Core Build - $(buildConfiguration)'
   inputs:
