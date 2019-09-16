@@ -3,6 +3,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  resultName: 'Devopslution'
 
 steps:
 - task: DotNetCoreCLI@2
@@ -28,4 +29,4 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'myWebsiteName'
+    artifactName: '$(resultName)'
