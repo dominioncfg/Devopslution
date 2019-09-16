@@ -11,9 +11,10 @@ steps:
   inputs:
     command: 'install' 
     workingDir: Devopslution.Web/
-- script: 'npm run build-prod'
+
+- script: 'npm run build-$(buildConfiguration)'
+  displayName: 'Run Webpack - $(buildConfiguration)'
   workingDirectory: Devopslution.Web/
-  displayName:
 
 - task: DotNetCoreCLI@2
   displayName: '.Net Core Build - $(buildConfiguration)'
