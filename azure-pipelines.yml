@@ -14,3 +14,17 @@ steps:
     majorVersion: '2' 
     minorVersion: '1' 
     patchVersion: '2' 
+
+- task: DotNetCoreCLI@2
+  displayName: '.Net Core Publish - $(buildConfiguration)'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+    zipAfterPublish: True
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'myWebsiteName'
