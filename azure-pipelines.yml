@@ -1,11 +1,42 @@
-trigger:
-- master
-
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-2019'
+
+variables:
+  buildConfiguration: 'Release'
+  resultName: 'Devopslution'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: Npm@1
+  displayName: 'Install NPM Packages - $(buildConfiguration)'
+  inputs:
+    command: 'install' 
+    workingDir: Devopslution.Web/
 
+- script: 'npm run build-$(buildConfiguration)'
+  displayName: 'Run Webpack - $(buildConfiguration)'
+  workingDirectory: Devopslution.Web/
 
+- task: DotNetCoreCLI@2
+  displayName: '.Net Core Build - $(buildConfiguration)'
+  inputs:
+    command: 'build'
+    arguments: '--configuration $(buildConfiguration)'
+    projects: '**/*.csproj'
+    majorVersion: '2' 
+    minorVersion: '1' 
+    patchVersion: '2' 
+
+- task: DotNetCoreCLI@2
+  displayName: '.Net Core Publish - $(buildConfiguration)'
+  inputs:
+    command: publish
+    projects: 'Devopslution.Web/Devopslution.Web.csproj'
+    publishWebProjects: false
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+    zipAfterPublish: True
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: '$(resultName)'
