@@ -24,7 +24,14 @@ steps:
     projects: '**/*.csproj'
     majorVersion: '2' 
     minorVersion: '1' 
-    patchVersion: '2' 
+    patchVersion: '2'
+
+- task: DotNetCoreCLI@2
+  displayName: '.Net Core Run Tests - $(buildConfiguration)'
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: '.Net Core Publish - $(buildConfiguration)'
