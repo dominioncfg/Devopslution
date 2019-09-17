@@ -1,4 +1,4 @@
-namespace Devopslution.Domain
+namespace Devopslution.Domain.Services.Technologies
 {
     public interface ITechnology
     {
