@@ -1,8 +1,7 @@
 stages:
-- stage: Build
+- stage: 'Build Stage'
   jobs:
-  - job: Build 
-
+  - job: 'BuildRelease'
     pool:
       vmImage: 'windows-2019'
 
