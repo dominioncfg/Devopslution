@@ -1,49 +1,54 @@
-pool:
-  vmImage: 'windows-2019'
+stages:
+- stage: Build
+  jobs:
+  - job: Build 
 
-variables:
-  buildConfiguration: 'Release'
-  resultName: 'Devopslution'
+    pool:
+      vmImage: 'windows-2019'
 
-steps:
-- task: Npm@1
-  displayName: 'Install NPM Packages - $(buildConfiguration)'
-  inputs:
-    command: 'install' 
-    workingDir: Devopslution.Web/
+    variables:
+      buildConfiguration: 'Release'
+      resultName: 'Devopslution'
 
-- script: 'npm run build-$(buildConfiguration)'
-  displayName: 'Run Webpack - $(buildConfiguration)'
-  workingDirectory: Devopslution.Web/
+    steps:
+    - task: Npm@1
+      displayName: 'Install NPM Packages - $(buildConfiguration)'
+      inputs:
+        command: 'install' 
+        workingDir: Devopslution.Web/
 
-- task: DotNetCoreCLI@2
-  displayName: '.Net Core Build - $(buildConfiguration)'
-  inputs:
-    command: 'build'
-    arguments: '--configuration $(buildConfiguration)'
-    projects: '**/*.csproj'
-    majorVersion: '2' 
-    minorVersion: '1' 
-    patchVersion: '2'
+    - script: 'npm run build-$(buildConfiguration)'
+      displayName: 'Run Webpack - $(buildConfiguration)'
+      workingDirectory: Devopslution.Web/
 
-- task: DotNetCoreCLI@2
-  displayName: '.Net Core Run Tests - $(buildConfiguration)'
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    - task: DotNetCoreCLI@2
+      displayName: '.Net Core Build - $(buildConfiguration)'
+      inputs:
+        command: 'build'
+        arguments: '--configuration $(buildConfiguration)'
+        projects: '**/*.csproj'
+        majorVersion: '2' 
+        minorVersion: '1' 
+        patchVersion: '2'
 
-- task: DotNetCoreCLI@2
-  displayName: '.Net Core Publish - $(buildConfiguration)'
-  inputs:
-    command: publish
-    projects: 'Devopslution.Web/Devopslution.Web.csproj'
-    publishWebProjects: false
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
-    zipAfterPublish: True
+    - task: DotNetCoreCLI@2
+      displayName: '.Net Core Run Tests - $(buildConfiguration)'
+      inputs:
+        command: test
+        projects: '**/*Tests/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: '$(resultName)'
+    - task: DotNetCoreCLI@2
+      displayName: '.Net Core Publish - $(buildConfiguration)'
+      inputs:
+        command: publish
+        projects: 'Devopslution.Web/Devopslution.Web.csproj'
+        publishWebProjects: false
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+        zipAfterPublish: True
+        
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+        artifactName: '$(resultName)'
