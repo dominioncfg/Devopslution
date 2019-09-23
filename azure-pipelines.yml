@@ -59,7 +59,7 @@ stages:
     pool:
       vmImage: 'windows-2019'
     variables:    
-      azureSubscription: 'Visual Studio Enterprise – MPN (666db697-d4f6-4cd3-ac04-9c0f8f9b7cdc)'
+      azureSubscription: ''
       azureAppName: 'devopslution'
       resultName: 'Devopslution'
     steps:
@@ -70,4 +70,11 @@ stages:
         buildType: 'current'
         downloadType: 'single'
         downloadPath: '$(System.ArtifactsDirectory)'
-   
+    - task: AzureRmWebAppDeployment@4
+      displayName: 'Publish Artifact'
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Visual Studio Enterprise – MPN (666db697-d4f6-4cd3-ac04-9c0f8f9b7cdc)'
+        appType: 'webApp'
+        WebAppName: '$(azureAppName)'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
