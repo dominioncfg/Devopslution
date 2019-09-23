@@ -77,4 +77,4 @@ stages:
         azureSubscription: 'Visual Studio Enterprise – MPN (666db697-d4f6-4cd3-ac04-9c0f8f9b7cdc)'
         appType: 'webApp'
         WebAppName: '$(azureAppName)'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        
