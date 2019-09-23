@@ -70,11 +70,4 @@ stages:
         buildType: 'current'
         downloadType: 'single'
         downloadPath: '$(System.ArtifactsDirectory)'
-    - task: AzureRmWebAppDeployment@4
-      displayName: 'Publish Artifact'
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: '$(azureSubscription)'
-        appType: 'webApp'
-        WebAppName: '$(azureAppName)'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+   
