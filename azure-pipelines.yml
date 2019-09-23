@@ -53,7 +53,7 @@ stages:
         artifactName: '$(resultName)'
 
 
-- stage: 'Release Stage'
+- stage: 'Release_Stage'
   jobs:
   - job: 'Release_Job'
     pool:
