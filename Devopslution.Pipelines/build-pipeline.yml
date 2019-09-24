@@ -1,10 +1,51 @@
+parameters:
+  name: 'Build_Job'
+  vmImage: ''
+  builConfig: ''
+  artifactName: 'Devopslution'
 jobs:
-- job: Build
-  pool:
-    vmImage: 'windows-2019'      
-  steps:
-  - task: Npm@1
-    displayName: 'Install NPM Packages'
-    inputs:
-      command: 'install' 
-      workingDir: Devopslution.Web/
+  - job: ${{ parameters.name }}
+    pool:
+      vmImage: ${{parameters.vmImage}}        
+    steps:
+    - task: Npm@1
+      displayName: 'Install NPM Packages - ${{parameters.builConfig}}'
+      inputs:
+        command: 'install' 
+        workingDir: Devopslution.Web/
+
+    - script: 'npm run build-${{parameters.builConfig}}'
+      displayName: 'Run Webpack - ${{parameters.builConfig}}'
+      workingDirectory: Devopslution.Web/
+
+    - task: DotNetCoreCLI@2
+      displayName: '.Net Core Build - ${{parameters.builConfig}}'
+      inputs:
+        command: 'build'
+        arguments: '--configuration ${{parameters.builConfig}}'
+        projects: '**/*.csproj'
+        majorVersion: '2' 
+        minorVersion: '1' 
+        patchVersion: '2'
+
+    - task: DotNetCoreCLI@2
+      displayName: '.Net Core Run Tests - ${{parameters.builConfig}}'
+      inputs:
+        command: test
+        projects: '**/*Tests/*.csproj'
+        arguments: '--configuration ${{parameters.builConfig}}'
+
+    - task: DotNetCoreCLI@2
+      displayName: '.Net Core Publish - ${{parameters.builConfig}}'
+      inputs:
+        command: publish
+        projects: 'Devopslution.Web/Devopslution.Web.csproj'
+        publishWebProjects: false
+        arguments: '--configuration ${{parameters.builConfig}} --output $(Build.ArtifactStagingDirectory)/${{parameters.builConfig}}'
+        zipAfterPublish: True
+        
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact  - ${{parameters.builConfig}}'
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+        artifactName: '${{parameters.Devopslution}}'
