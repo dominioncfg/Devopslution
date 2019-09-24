@@ -1,6 +1,4 @@
-stages:
-- stage: 'Build_Stage'
-  jobs:
-    - template: Devopslution.Pipelines/build-pipeline.yml
+jobs:
+- template: Devopslution.Pipelines/build-pipeline.yml
     
       

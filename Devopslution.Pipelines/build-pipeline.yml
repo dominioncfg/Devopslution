@@ -1,10 +1,10 @@
 jobs:
-  - job: Build
-    pool:
-      vmImage: 'windows-2019'      
-      steps:
-      - task: Npm@1
-        displayName: 'Install NPM Packages - ${{parameters.builConfig}}'
-        inputs:
-          command: 'install' 
-          workingDir: Devopslution.Web/
+- job: Build
+  pool:
+    vmImage: 'windows-2019'      
+    steps:
+    - task: Npm@1
+      displayName: 'Install NPM Packages - ${{parameters.builConfig}}'
+      inputs:
+        command: 'install' 
+        workingDir: Devopslution.Web/
