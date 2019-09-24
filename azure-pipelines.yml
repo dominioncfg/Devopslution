@@ -1,4 +1,36 @@
-jobs:
-- template: Devopslution.Pipelines/build-pipeline.yml
-    
-      
+stages:
+- stage: 'Build_Stage'
+  jobs:
+    - template: Devopslution.Pipelines/build-pipeline.yml
+      parameters:
+        name: Build_Job
+        vmImage: 'windows-2019'
+        builConfig: 'Release'
+        artifactName: 'Devopslution'
+
+- stage: 'Release_Stage'
+  jobs:
+  - job: 'Release_Job'
+    pool:
+      vmImage: 'windows-2019'
+    variables:    
+      azureSubscription: ''
+      azureAppName: 'devopslution'
+      resultName: 'Devopslution'
+    steps:
+    - task: DownloadBuildArtifacts@0
+      displayName: 'Download Build Artifact'
+      inputs:
+        artifactName: '$(resultName)'
+        buildType: 'current'
+        downloadType: 'single'
+        downloadPath: '$(System.ArtifactsDirectory)'
+    - task: AzureRmWebAppDeployment@4
+      displayName: 'Publish Artifact'
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Visual Studio Enterprise – MPN (666db697-d4f6-4cd3-ac04-9c0f8f9b7cdc)'
+        appType: 'webApp'
+        WebAppName: '$(azureAppName)'
+        packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
+        
