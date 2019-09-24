@@ -48,4 +48,4 @@ jobs:
       displayName: 'Publish Artifact  - ${{parameters.builConfig}}'
       inputs:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-        artifactName: '${{parameters.Devopslution}}'
+        artifactName: '${{parameters.artifactName}}'
