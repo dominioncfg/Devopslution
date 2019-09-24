@@ -16,3 +16,4 @@ stages:
           vmImage: 'windows-2019'
           artifactName: 'Devopslution'
           azureAppName: devopslution
+          azureSubscription: $(azureSubscription)
