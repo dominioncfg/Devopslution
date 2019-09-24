@@ -1,3 +1,5 @@
+trigger:
+- master
 stages:
 - stage: 'Build_Stage'
   jobs:
