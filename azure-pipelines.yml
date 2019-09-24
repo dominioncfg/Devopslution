@@ -1,10 +1,9 @@
-stages:
-- stage: 'Build_Stage'
-  jobs:
-  - template: ./Devopslution.Pipelines/build-pipeline.yml
-    parameters:
-      name: Build_Job
-      vmImage: 'windows-2019'
-      builConfig: 'Release'
-      artifactName: 'Devopslution'
+
+jobs:
+- template: ./Devopslution.Pipelines/build-pipeline.yml
+  parameters:
+    name: Build_Job
+    vmImage: 'windows-2019'
+    builConfig: 'Release'
+    artifactName: 'Devopslution'
 
