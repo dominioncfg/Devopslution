@@ -15,5 +15,5 @@ stages:
           name: Release_Job
           vmImage: 'windows-2019'
           artifactName: 'Devopslution'
-          azureAppName: devopslution
+          azureAppName: $(azurePublishAppName)
           azureSubscription: $(azureSubscription)
