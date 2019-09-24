@@ -1,0 +1,31 @@
+parameters:
+  name: 'Release_Job'
+  vmImage: ''
+  artifactName: ''
+  azureAppName: ''
+  azureSubscription: ''
+jobs:
+- job: ${{ parameters.name }}
+
+  pool:
+    vmImage: ${{parameters.vmImage}}
+
+  steps:
+
+  - task: DownloadBuildArtifacts@0
+    displayName: 'Download Build Artifact'
+    inputs:
+      artifactName: '${{parameters.artifactName}}'
+      buildType: 'current'
+      downloadType: 'single'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  - task: AzureRmWebAppDeployment@4
+    displayName: 'Publish Artifact'
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: ${{parameters.azureSubscription}}
+      appType: 'webApp'
+      WebAppName: ${{parameters.azureAppName}}
+      packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
+        
