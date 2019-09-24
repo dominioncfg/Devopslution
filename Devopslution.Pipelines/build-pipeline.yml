@@ -4,7 +4,7 @@ jobs:
     vmImage: 'windows-2019'      
   steps:
   - task: Npm@1
-    displayName: 'Install NPM Packages - ${{parameters.builConfig}}'
+    displayName: 'Install NPM Packages'
     inputs:
     command: 'install' 
     workingDir: Devopslution.Web/
