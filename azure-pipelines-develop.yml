@@ -9,7 +9,7 @@ stages:
         vmImage: 'windows-2019'
         builConfig: 'Release'
         artifactName: 'Devopslution'
-
+         
 - stage: 'Release_Stage'
   jobs:
       - template: Devopslution.Pipelines/release-pipeline.yml
