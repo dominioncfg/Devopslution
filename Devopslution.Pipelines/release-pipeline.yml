@@ -25,6 +25,10 @@ jobs:
       ConnectionType: 'AzureRM'
       azureSubscription: 'Visual Studio Enterprise – MPN (666db697-d4f6-4cd3-ac04-9c0f8f9b7cdc)'
       appType: 'webApp'
+<<<<<<< HEAD
       WebAppName: '${{parameters.azureAppName}}'
+=======
+      WebAppName: '${{azureAppName}}'
+>>>>>>> 41c7a7a3d72f031fbb7d87dd1519f9fa4c9c31d8
       packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
         
