@@ -10,7 +10,7 @@ jobs:
     vmImage: ${{parameters.vmImage}}
 
   steps:
-   
+
   - task: DownloadBuildArtifacts@0
     displayName: 'Download Build Artifact'
     inputs:
@@ -25,6 +25,6 @@ jobs:
       ConnectionType: 'AzureRM'
       azureSubscription: 'Visual Studio Enterprise – MPN (666db697-d4f6-4cd3-ac04-9c0f8f9b7cdc)'
       appType: 'webApp'
-      WebAppName: '$(azureAppName)'
+      WebAppName: '${{parameters.azureAppName}}'
       packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
         
