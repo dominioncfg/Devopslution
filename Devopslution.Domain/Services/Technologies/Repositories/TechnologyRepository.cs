@@ -68,6 +68,12 @@ namespace Devopslution.Domain.Services.Technologies
                     Name ="Sass",
                     ImageUrl ="SassLogo.svg",
                 },
+                 new Technology()
+                {
+                    Id =11,
+                    Name ="Azure Devops Service 15",
+                    ImageUrl ="SassLogo.svg",
+                },
                
             };
             foreach (var tech in techs)
