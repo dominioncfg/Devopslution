@@ -71,7 +71,7 @@ namespace Devopslution.Domain.Services.Technologies
                  new Technology()
                 {
                     Id =11,
-                    Name ="Azure Devops",
+                    Name ="Azure Devops Service",
                     ImageUrl ="SassLogo.svg",
                 },
                
