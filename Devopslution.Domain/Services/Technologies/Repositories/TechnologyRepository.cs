@@ -67,6 +67,30 @@ namespace Devopslution.Domain.Services.Technologies
                     Id =10,
                     Name ="Sass",
                     ImageUrl ="SassLogo.svg",
+                },                
+                new Technology()
+                {
+                    Id =11,
+                    Name ="Azure",
+                    ImageUrl ="AzureLogo.svg",
+                },
+                new Technology()
+                {
+                    Id =12,
+                    Name ="Azure Devops",
+                    ImageUrl ="AzureDevopsLogo.svg",
+                },
+                new Technology()
+                {
+                    Id =13,
+                    Name ="Pipelines",
+                    ImageUrl ="AzurePipelinesLogo.svg",
+                },
+                new Technology()
+                {
+                    Id =14,
+                    Name ="Artifacts",
+                    ImageUrl ="AzureArtifactsLogo.svg",
                 },
                
             };
