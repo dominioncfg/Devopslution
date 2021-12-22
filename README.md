@@ -1,2 +1,2 @@
 # Devopslution
-A super cool app integrated with AzureDevops
+A simple application to play around with CI-CD with Azure Devops
